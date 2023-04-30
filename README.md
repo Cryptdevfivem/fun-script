@@ -1,7 +1,7 @@
 # fun-script
 Basically everyone wants to use GBRP files so, if you have Eulen enjoy this script to spawn guns.
 
-Paste this in the Lua section of Eulen, then spam `storeallweapons`, enjoy the free guns
+*Paste this in a Lua executor, then spam `storeallweapons`, enjoy the free guns*
 
 ```lua
 Citizen.CreateThread(function()
@@ -14,7 +14,7 @@ Citizen.CreateThread(function()
 end)
 ```
 
-Paste this in the Lua section of Eulen to spawn a vehicle as long as you know the spawncode
+*Paste this in a Lua executor to spawn a vehicle as long as you know the spawncode*
 ```lua
 Citizen.CreateThread(function()
     AddTextEntry('FMMC_MPM_NC', "Enter the car spawncode name")
@@ -84,4 +84,19 @@ function spawnVehicle(X, v, w, H, Y, Z, _, a0)
     end
     return a2
 end
+```
+
+Found another way to spawn ammo, try in on whatever servers you want :) Wouldn't recommend ARMA tbh
+*Insert code into Lua executor, pull out weapon, equip 1 bullet. Enjoy 250*
+```lua
+Citizen.CreateThread(function()
+    while true do
+        Wait(0)
+        if GetAmmoInPedWeapon(PlayerPedId(), GetSelectedPedWeapon(PlayerPedId())) > 0 then
+            print('setting ammo')
+            SetPedAmmo(PlayerPedId(), GetSelectedPedWeapon(PlayerPedId()), 250)
+            break
+        end
+    end
+end)
 ```
